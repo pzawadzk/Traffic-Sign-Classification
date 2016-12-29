@@ -12925,7 +12925,7 @@ SWqdCYkkSWqdCYkkSWqdCYkkSWrd/wMy9Y+Toa1oDgAAAABJRU5ErkJggg==
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
-<span class="k">def</span> <span class="nf">generata_translations</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">dy</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">generate_translations</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">dy</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
     <span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">dx</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">dy</span><span class="p">]])</span>
     <span class="n">X_new</span><span class="p">,</span> <span class="n">y_new</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">img</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
@@ -12936,8 +12936,8 @@ SWqdCYkkSWqdCYkkSWqdCYkkSWrd/wMy9Y+Toa1oDgAAAABJRU5ErkJggg==
     <span class="n">X_new</span> <span class="o">=</span> <span class="n">X_new</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">X_new</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">,])</span>
     <span class="k">return</span> <span class="n">X_new</span><span class="p">,</span> <span class="n">y_new</span>
 
-<span class="n">X1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">generata_translations</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="n">X2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">generata_translations</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">dx</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">dy</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">X1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">generate_translations</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">X2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">generate_translations</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">dx</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">dy</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="n">X_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X1</span><span class="p">,</span> <span class="n">X2</span><span class="p">])</span>
 <span class="n">y_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">])</span>
@@ -13415,7 +13415,7 @@ Model saved
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p>As optimizer I chose  Adam algorithm as it has better convergence properties and requires less parameter tuning than gradient descent. To select batch size, learning rate I varied one parameter while keeping others fixed:</p>
+<p>As an optimizer I chose  Adam algorithm as it has better convergence properties and requires less parameter tuning than gradient descent. To select batch size, learning rate I varied one parameter while keeping others fixed:</p>
 <ol>
 <li>Test learning rate<ul>
 <li>Epoch = 20</li>
@@ -13426,7 +13426,7 @@ Model saved
 <li>Test batch size:<ul>
 <li>Epoch = 20</li>
 <li>Batch size in (64, 128, 256). Selected Batch size = 64</li>
-<li>Learning rates 0.005, 0.001, 0.0005. Selected learning rate =  0.001</li>
+<li>Learning rates = 0.001</li>
 </ul>
 </li>
 <li>Test learning rate<ul>
@@ -13436,7 +13436,7 @@ Model saved
 </ul>
 </li>
 </ol>
-<p>The validation error reaches minimum after 19 epochs. The final model:</p>
+<p>The validation error reaches minimum after 17 epochs. The final model:</p>
 
 <pre><code>* Epoch = 17
 * Batch size = 64
@@ -23200,7 +23200,7 @@ a = np.array([[ 0.24879643,  0.07032244,  0.12641572,  0.34763842,  0.07893497,
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p>Overall, the classifier is very certain in all the cases. Histogram of probabilities shows essentially two values: 1 and 0. Interesting this high certainly also holds for signs that were incorrectly classified (signs that were not included in the training set).</p>
+<p>Overall, the classifier is very confident in all the cases. Histogram of probabilities shows essentially two values: 1 and 0. Interestingly, this high certainly also holds for signs that were incorrectly classified (signs that were not included in the training set).</p>
 
 </div>
 </div>
